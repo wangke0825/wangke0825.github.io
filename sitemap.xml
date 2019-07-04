@@ -3,12 +3,22 @@
 
     <sitemap>
         <loc>http://weekweekup.com/post-sitemap.xml</loc>
-        <lastmod>2019-07-03T23:45:08.082Z</lastmod>
+        <lastmod>2019-07-04T06:46:34.664Z</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>http://weekweekup.com/page-sitemap.xml</loc>
         <lastmod>2019-07-04T00:53:51.994Z</lastmod>
+    </sitemap>
+
+    <sitemap>
+        <loc>http://weekweekup.com/category-sitemap.xml</loc>
+        <lastmod>2019-07-04T06:46:34.664Z</lastmod>
+    </sitemap>
+
+    <sitemap>
+        <loc>http://weekweekup.com/tag-sitemap.xml</loc>
+        <lastmod>2019-07-04T06:46:34.664Z</lastmod>
     </sitemap>
 
 </sitemapindex>

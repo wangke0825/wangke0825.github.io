@@ -7,11 +7,10 @@
     </url>
 
     <url>
-        <loc>http://weekweekup.com/2019/07/03/hello-world/</loc>
+        <loc>http://weekweekup.com/categories/%E6%B5%8B%E8%AF%95/</loc>
         <lastmod>2019-07-04T06:46:34.664Z</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
+        <priority>0.2</priority>
     </url>
 
 </urlset>
