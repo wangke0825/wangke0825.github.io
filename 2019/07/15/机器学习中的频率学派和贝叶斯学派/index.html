@@ -218,11 +218,24 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>如今，我们处在一个信息时代，一切皆数据。我们通俗的来理解机器学习的话，就是基于已知的数据构建概率模型，再运用构建的概率模型对未知数据进行预测与分析。那么，对于概率不同的认知，必然会产生完全不同的模型，得到不同的结果。对于概率的认知，主要有两大学派，他们分别是<strong>频率学派</strong>和<strong>贝叶斯学派</strong>，我们先从一个例子开始，在看的过程中，你可以思考两个答案分别是哪个学派的解法？</p>
+                <h2><span id="抛出问题">抛出问题</span></h2>
+<p>如今，我们处在一个信息时代，一切皆数据。我们通俗的来理解机器学习的话，就是基于已知的数据构建概率模型，再运用构建的概率模型对未知数据进行预测与分析。那么，对于概率不同的认知，必然会产生完全不同的模型，得到不同的结果。对于概率的认知，主要有两大学派，他们分别是<strong>频率学派</strong>和<strong>贝叶斯学派</strong>，我们先从一个例子开始，来看看两个学派有什么不同？</p>
 <blockquote>
-<p><em>Nature Biotechnology 第 22 卷第 9 期上的论文《什么是贝叶斯统计学》（What+is+Bayesian+statistics）</em></p>
+<p><em>Nature Biotechnology 第 22 卷第 9 期上的论文《什么是贝叶斯统计学》（What is Bayesian statistics）</em></p>
 <p>Alice 和 Bob 在进行一场赌局，先得到 6 分者获胜。判断得分的方式有一些特别：在赌局开始之前，荷官在赌桌上扔一个小球，在这个球停止的位置做个标记。显然，这个标记的位置是随机的。赌局开始后，荷官继续扔球，如果球停到标记的左侧，则 Alice 得分；反之停到标记右侧，则 Bob 得分，这就是赌局的计分规则。那么问题来了：在这样的规则下，Alice 现在以 5:3 领先 Bob，那么 Bob 反败为胜的概率是多大呢？</p>
 </blockquote>
+<h2><span id="频率学派">频率学派</span></h2>
+<p>频率学派，一听这个名字就知道这个学派肯定是支持频率学说的，由<strong>伯努利定理</strong>，我们可以知道：、<br>
+$$<br>
+对于任意正数ε，有<br>
+	\lim <em>{n \rightarrow \infty} P\left{\left|\frac{n</em>{A}}{n}-p\right|&lt;\varepsilon\right}=1<br>
+$$<br>
+即<strong>事件A发生的频率以概率收敛于事件A的概率P</strong>，也就是频率学派认为概率是事件发生频率的极限值。</p>
+<p>频率学派的核心观点：<strong>参数固定，数据随机</strong></p>
+<p>频率学派认为我们待估计的参数是固定的，因为他已经产生了这些数据，每个数据都是该参数下独立重复试验的结果。（你也可以理解为爱就在那里，不增不减），那么既然参数固定，数据随机，**这个数据如果出现了的话，那么它的概率就是最大的。**由此便可以引出频率学派的常用参数估计方法：<strong>极大似然估计</strong>。</p>
+<h2><span id="参考文献">参考文献</span></h2>
+<p>这篇文章是在学习了极客时间《机器学习40讲》课程后完成的，文中参考了课程中的一些案例和观点，王天一老师的课程非常的精彩，每一篇都给我以醍醐灌顶的感觉，内容里面有非常多的干货，在此也推荐给有需要的同学！</p>
+<p><img src="C:%5CUsers%5CK1127%5COneDrive%5Cwangke0825.github.io%5Csource_posts%5C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E9%A2%91%E7%8E%87%E5%AD%A6%E6%B4%BE%E5%92%8C%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AD%A6%E6%B4%BE%5Cposter.jpg" alt="poster"></p>
 
                 
 
@@ -237,16 +250,6 @@
                     
                 </ul>
 
-                <p></p>
-                <!--PC版-->
-                <div id="SOHUCS" ></div>
-                <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
-                <script type="text/javascript">
-                window.changyan.api.config({
-                appid: 'cyujDPBFH',
-                conf: 'prod_b7479796d7e61a32cb9e46c573e2314d'
-                });
-                </script>
                                 <!-- duoshuo Share start -->
                 
                 <!-- 多说 Share end-->
@@ -268,7 +271,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="nav">none</ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">抛出问题</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">频率学派</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">参考文献</span></a></li></ol>
         
         </div>
       </aside>
@@ -409,7 +412,7 @@
                     <br/>备案号:<b>蜀ICP备18016250号-1 </b>
                 </p>
                 <!-- <p class="copyright text-muted">
-                    <span class="post-count">404 words altogether</span>
+                    <span class="post-count">742 words altogether</span>
                 </p> -->
             </div>
         </div>
