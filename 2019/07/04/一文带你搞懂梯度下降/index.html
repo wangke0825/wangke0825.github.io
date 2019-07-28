@@ -90,9 +90,9 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#机器学习" title="机器学习">机器学习</a>
-                            
                               <a class="tag" href="/tags/#梯度下降" title="梯度下降">梯度下降</a>
+                            
+                              <a class="tag" href="/tags/#机器学习" title="机器学习">机器学习</a>
                             
                               <a class="tag" href="/tags/#优化算法" title="优化算法">优化算法</a>
                             
@@ -141,9 +141,6 @@
                         <a href="/">Home</a>
                     </li>
 
-                    
-
-                        
                     
 
                         
@@ -218,13 +215,10 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="什么是梯度">什么是梯度</span></h2>
-<p>大家一听到梯度可能就放弃了，觉得很难，又是让人头疼的数学。其实不然，机器学习中的名词对我们来说，可能比较陌生，听着怪吓人的。</p>
-<p>$$<br>
-\begin{equation}<br>
-f(x ; \alpha, \beta)=\frac{1}{B(\alpha, \beta)} x^{\alpha-1}(1-x)^{\beta-1}<br>
-\end{equation}<br>
-$$</p>
+                <h2><span id="什么是梯度">什么是梯度</span></h2><p>大家一听到梯度可能就放弃了，觉得很难，又是让人头疼的数学。其实不然，机器学习中的名词对我们来说，可能比较陌生，听着怪吓人的。</p>
+<p>$$<br>\begin{equation}<br>f(x ; \alpha, \beta)=\frac{1}{B(\alpha, \beta)} x^{\alpha-1}(1-x)^{\beta-1}<br>\end{equation}<br>$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义常量操作 hello</span></span><br><span class="line">hello = tf.constant(<span class="string">'Hello Tensorflow'</span>)</span><br><span class="line"><span class="comment"># 创建一个会话</span></span><br><span class="line">sess = tf.Session()</span><br><span class="line"><span class="comment"># 执行常量操作 hello 并打印到标准输出</span></span><br><span class="line">print(sess.run(hello))</span><br></pre></td></tr></table></figure>
+
 
                 
 
@@ -279,9 +273,9 @@ $$</p>
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#机器学习" title="机器学习">机器学习</a>
-                        
                           <a class="tag" href="/tags/#梯度下降" title="梯度下降">梯度下降</a>
+                        
+                          <a class="tag" href="/tags/#机器学习" title="机器学习">机器学习</a>
                         
                           <a class="tag" href="/tags/#优化算法" title="优化算法">优化算法</a>
                         
@@ -410,7 +404,7 @@ $$</p>
                 </script>
 
                 <!-- <p class="copyright text-muted">
-                    <span class="post-count">776 words altogether</span>
+                    <span class="post-count">819 words altogether</span>
                 </p> -->
             </div>
         </div>
