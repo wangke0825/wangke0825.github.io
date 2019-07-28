@@ -148,14 +148,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -218,22 +218,17 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="抛出问题">抛出问题</span></h2>
-<p>如今，我们处在一个信息时代，一切皆数据。我们通俗的来理解机器学习的话，就是基于已知的数据构建概率模型，再运用构建的概率模型对未知数据进行预测与分析。那么，对于概率不同的认知，必然会产生完全不同的模型，得到不同的结果。对于概率的认知，主要有两大学派，他们分别是<strong>频率学派</strong>和<strong>贝叶斯学派</strong>，我们先从一个例子开始，来看看两个学派有什么不同？</p>
+                <h2><span id="抛出问题">抛出问题</span></h2><p>如今，我们处在一个信息时代，一切皆数据。我们通俗的来理解机器学习的话，就是基于已知的数据构建概率模型，再运用构建的概率模型对未知数据进行预测与分析。那么，对于概率不同的认知，必然会产生完全不同的模型，得到不同的结果。对于概率的认知，主要有两大学派，他们分别是<strong>频率学派</strong>和<strong>贝叶斯学派</strong>，我们先从一个例子开始，来看看两个学派有什么不同？</p>
 <blockquote>
 <p><em>Nature Biotechnology 第 22 卷第 9 期上的论文《什么是贝叶斯统计学》（What is Bayesian statistics）</em></p>
 <p>Alice 和 Bob 在进行一场赌局，先得到 6 分者获胜。判断得分的方式有一些特别：在赌局开始之前，荷官在赌桌上扔一个小球，在这个球停止的位置做个标记。显然，这个标记的位置是随机的。赌局开始后，荷官继续扔球，如果球停到标记的左侧，则 Alice 得分；反之停到标记右侧，则 Bob 得分，这就是赌局的计分规则。那么问题来了：在这样的规则下，Alice 现在以 5:3 领先 Bob，那么 Bob 反败为胜的概率是多大呢？</p>
 </blockquote>
-<h2><span id="频率学派">频率学派</span></h2>
-<p>频率学派，一听这个名字就知道这个学派肯定是支持频率学说的，由<strong>伯努利定理</strong>，我们可以知道：<br>
-$$<br>
-\lim <em>{n \rightarrow \infty} P\left{\left|\frac{n</em>{A}}{n}-p\right|&lt;\varepsilon\right}=1<br>
-$$<br>
-即<strong>事件A发生的频率以概率收敛于事件A的概率P</strong>，也就是频率学派认为概率是事件发生频率的极限值。</p>
+<h2><span id="频率学派">频率学派</span></h2><p>频率学派，一听这个名字就知道这个学派肯定是支持频率学说的，由<strong>伯努利定理</strong>，我们可以知道：</p>
+<p>$$<br>\lim <em>{n \rightarrow \infty} P\left\{\left|\frac{n</em>{A} }{n}-p\right|&lt;\varepsilon\right\}=1<br>$$<br>即<strong>事件A发生的频率以概率收敛于事件A的概率P</strong>，也就是频率学派认为概率是事件发生频率的极限值。</p>
 <p>频率学派的核心观点：<strong>参数固定，数据随机</strong></p>
-<p>频率学派认为我们待估计的参数是固定的，因为他已经产生了这些数据，每个数据都是该参数下独立重复试验的结果。（你也可以理解为爱就在那里，不增不减），那么既然参数固定，数据随机，**这个数据如果出现了的话，那么它的概率就是最大的。**由此便可以引出频率学派的常用参数估计方法：<strong>极大似然估计</strong>。</p>
-<h2><span id="参考文献">参考文献</span></h2>
-<p>这篇文章是在学习了极客时间《机器学习40讲》课程后完成的，文中参考了课程中的一些案例和观点，王天一老师的课程非常的精彩，每一篇都给我以醍醐灌顶的感觉，内容里面有非常多的干货，在此也推荐给有需要的同学！</p>
+<p>频率学派认为我们待估计的参数是固定的，因为他已经产生了这些数据，每个数据都是该参数下独立重复试验的结果。（你也可以理解为爱就在那里，不增不减），那么既然参数固定，数据随机，<strong>这个数据如果出现了的话，那么它的概率就是最大的。</strong>由此便可以引出频率学派的常用参数估计方法：<strong>极大似然估计</strong>。</p>
+<p>测试：<br>$$<br>\begin{equation}<br>f(x ; \alpha, \beta)=\frac{1}{B(\alpha, \beta)} x^{\alpha-1}(1-x)^{\beta-1}<br>\end{equation}<br>$$</p>
+<h2><span id="参考文献">参考文献</span></h2><p>这篇文章是在学习了极客时间《机器学习40讲》课程后完成的，文中参考了课程中的一些案例和观点，王天一老师的课程非常的精彩，每一篇都给我以醍醐灌顶的感觉，内容里面有非常多的干货，在此也推荐给有需要的同学！</p>
 <p><img src="/2019/07/15/机器学习中的频率学派和贝叶斯学派/poster.jpg" alt="poster"></p>
 
                 
@@ -343,7 +338,6 @@ $$<br>
         anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
     })
 </script>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 <style>
     /* place left on bigger screen */
     @media all and (min-width: 800px) {
@@ -356,7 +350,7 @@ $$<br>
     }
 </style>
 
-
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
     <!-- Footer -->
     <!-- Footer -->
@@ -421,7 +415,7 @@ $$<br>
                 </script>
 
                 <!-- <p class="copyright text-muted">
-                    <span class="post-count">734 words altogether</span>
+                    <span class="post-count">776 words altogether</span>
                 </p> -->
             </div>
         </div>
