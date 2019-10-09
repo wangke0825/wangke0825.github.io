@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="分享自己读研和成长的点点滴滴，欢迎你来">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Tensorflow 2.0基础教程--1.TF基础 - 机器学习炼成记 | 王柯
+        
+    </title>
+
+    <link rel="canonical" href="http://weekweekup.com/2019/10/09/Tensorflow-2-0基础教程-1-TF基础/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/2019/10/09/Tensorflow-2-0基础教程-1-TF基础/header.png')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#机器学习" title="机器学习">机器学习</a>
+                            
+                              <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                            
+                              <a class="tag" href="/tags/#TensorFlow" title="TensorFlow">TensorFlow</a>
+                            
+                        </div>
+                        <h1>Tensorflow 2.0基础教程--1.TF基础</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Ke Wang on
+                            2019-10-09
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">机器学习炼成记</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2><span id="面向深度学习研究人员的tensorflow-20-和-keras-概述">面向深度学习研究人员的Tensorflow 2.0 和 Keras 概述</span></h2><hr>
+<p>这篇文章可以是看作是Tensorflow 2.0的一个介绍，速成课程或者是API手册。</p>
+<hr>
+<p>Tensorflow 和 Keras 都是四年前发布的（keras发布于2015年3月，Tensorflow发布于2015年11月）。在深度学习时代，这是一段很长的时间。</p>
+<p>在过去的一段时间内，Tensorflow 1.X+Keras存在很多显著的问题：</p>
+<ul>
+<li>使用TensorFlow意味着要处理静态计算图，对于习惯于命令式编码的程序员而言，这将感到尴尬和困难。</li>
+<li>虽然TensorFlow API非常强大和灵活，但它缺乏完整性，常常令人困惑或难以使用。</li>
+<li>尽管Keras的效率很高且易于使用，但对于研究用例通常缺乏灵活性。</li>
+</ul>
+<hr>
+<p>TensorFlow 2.0是TensorFlow和Keras的重新设计，考虑了四年来的用户反馈和技术进步。 它在很大程度上解决了上述问题。</p>
+<p>它是来自未来的机器学习平台。</p>
+<hr>
+<p>TensorFlow 2.0是基于关键理念建立的：</p>
+<ul>
+<li>让用户像在Numpy中一样快速地运行他们的计算。 这使TensorFlow 2.0编程变得直观和Pythonic。</li>
+<li>保留已编译图形的显著优势（用于性能，分布和部署）。这使TensorFlow快速，可扩展且可投入生产。</li>
+<li>利用Keras作为高阶深度学习API，使TensorFlow易于上手且高效。</li>
+<li>将Keras扩展到从非常高阶（更易于使用，不太灵活）到非常低阶（需要更多专业知识，但提供了极大灵活性）的工作流范围。</li>
+</ul>
+<h2><span id="part-1-tensorflow-基础">Part 1: TensorFlow 基础</span></h2><h3><span id="tensors">Tensors</span></h3><p>这是一个常量tensor：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x=tf.constant([[<span class="number">5</span>,<span class="number">2</span>],[<span class="number">1</span>,<span class="number">3</span>]])</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tf.Tensor(</span><br><span class="line">[[<span class="number">5</span> <span class="number">2</span>]</span><br><span class="line"> [<span class="number">1</span> <span class="number">3</span>]], shape=(<span class="number">2</span>, <span class="number">2</span>), dtype=int32)</span><br></pre></td></tr></table></figure>
+
+<p>你可以通过.numpy()将其转换为numpy数组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.numpy()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array([[5, 2],</span><br><span class="line">       [1, 3]], dtype=int32)</span><br></pre></td></tr></table></figure>
+
+<p>与Numpy数组类似，它具有dtype和shape属性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'dtype:'</span>,x.dtype)</span><br><span class="line">print(<span class="string">'shape:'</span>,x.shape)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dtype: &lt;dtype: &apos;int32&apos;&gt;</span><br><span class="line">shape: (2, 2)</span><br></pre></td></tr></table></figure>
+
+<p>创建常量tensor的常见方法是通过tf.ones和tf.zeros（就像np.ones和np.zeros一样）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(tf.ones(shape=(<span class="number">2</span>,<span class="number">1</span>)))</span><br><span class="line">print(tf.zeros(shape=(<span class="number">2</span>,<span class="number">1</span>)))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tf.Tensor(</span><br><span class="line">[[1.]</span><br><span class="line"> [1.]], shape=(2, 1), dtype=float32)</span><br><span class="line">tf.Tensor(</span><br><span class="line">[[0.]</span><br><span class="line"> [0.]], shape=(2, 1), dtype=float32)</span><br></pre></td></tr></table></figure>
+
+<h3><span id="random-constant-tensors">Random constant tensors</span></h3><p>这些都是很常见的操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.random.normal(shape=(<span class="number">2</span>,<span class="number">2</span>),mean=<span class="number">0</span>,stddev=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;tf.Tensor: id=12, shape=(2, 2), dtype=float32, numpy=</span><br><span class="line">array([[0.6217265, 1.2303427],</span><br><span class="line">       [1.5007292, 1.5980493]], dtype=float32)&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这是一个整数张量，它的值来自随机均匀分布：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.random.uniform(shape=(<span class="number">2</span>,<span class="number">2</span>),minval=<span class="number">0</span>,maxval=<span class="number">10</span>,dtype=<span class="string">'int32'</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;tf.Tensor: id=16, shape=(2, 2), dtype=int32, numpy=</span><br><span class="line">array([[9, 8],</span><br><span class="line">       [5, 4]], dtype=int32)&gt;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="variables">Variables</span></h3><p>变量是用于存储可变状态（例如神经网络的权重）的特殊张量。你可以使用一些初始值创建变量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">initial_value=tf.random.normal(shape=(<span class="number">2</span>,<span class="number">2</span>))</span><br><span class="line">a=tf.Variable(initial_value)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;tf.Variable &apos;Variable:0&apos; shape=(2, 2) dtype=float32, numpy=</span><br><span class="line">array([[-0.5414013,  0.7531116],</span><br><span class="line">       [ 1.2361312, -0.3423896]], dtype=float32)&gt;</span><br></pre></td></tr></table></figure>
+
+<p>你可以使用.assign（value）或.assign_add（increment）或.assign_sub（decrement）方法来更新变量的值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">new_value=tf.random.normal(shape=(<span class="number">2</span>,<span class="number">2</span>))</span><br><span class="line">a.assign(new_value)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">    <span class="keyword">assert</span> a[i,j]==new_value[i,j]</span><br></pre></td></tr></table></figure>
+
+<h3><span id="在tensorflow中进行数学运算">在Tensorflow中进行数学运算</span></h3><p>你可以像使用Numpy一样使用TensorFlow。 主要区别在于你的TensorFlow代码可以在GPU或者TPU上运行。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a=tf.random.normal(shape=(<span class="number">2</span>,<span class="number">2</span>))</span><br><span class="line">b=tf.random.normal(shape=(<span class="number">2</span>,<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">c=a+b</span><br><span class="line">print(c)</span><br><span class="line">d=tf.square(c)</span><br><span class="line">print(d)</span><br><span class="line">e=tf.exp(d)</span><br><span class="line">print(e)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tf.Tensor(</span><br><span class="line">[[-0.05426443 -3.1266074 ]</span><br><span class="line"> [-0.03506213  1.2864295 ]], shape=(2, 2), dtype=float32)</span><br><span class="line">tf.Tensor(</span><br><span class="line">[[2.9446280e-03 9.7756739e+00]</span><br><span class="line"> [1.2293532e-03 1.6549009e+00]], shape=(2, 2), dtype=float32)</span><br><span class="line">tf.Tensor(</span><br><span class="line">[[1.0029490e+00 1.7600346e+04]</span><br><span class="line"> [1.0012301e+00 5.2325616e+00]], shape=(2, 2), dtype=float32)</span><br></pre></td></tr></table></figure>
+
+<h3><span id="使用gradienttape计算梯度">使用GradientTape计算梯度</span></h3><p>与Numpy还有另外一个很大的不同：你以自动检索任何可微分表达式的梯度。</p>
+<p>只需打开GradientTape，开始通过tape.watch（）“监视”张量，然后使用该张量作为输入来组成可微分表达式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a=tf.random.normal(shape=(<span class="number">2</span>,<span class="number">2</span>))</span><br><span class="line">b=tf.random.normal(shape=(<span class="number">2</span>,<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.GradientTape() <span class="keyword">as</span> tape:</span><br><span class="line">  tape.watch(a)  <span class="comment"># 开始记录a上面的历史操作</span></span><br><span class="line">  c=tf.sqrt(tf.square(a)+tf.square(b))  <span class="comment"># 用a做一些数学运算</span></span><br><span class="line">  dc_da=tape.gradient(c,a) <span class="comment"># c对a的梯度</span></span><br><span class="line">  print(dc_da)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tf.Tensor(</span><br><span class="line">[[-0.0762483   0.9965559 ]</span><br><span class="line"> [ 0.42784458  0.7609917 ]], shape=(2, 2), dtype=float32)</span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，变量是自动监视的，因此你无需手动监视它们：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a=tf.Variable(a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.GradientTape() <span class="keyword">as</span> tape:</span><br><span class="line">  c=tf.sqrt(tf.square(a)+tf.square(b))</span><br><span class="line">  dc_da=tape.gradient(c,a)</span><br><span class="line">  print(dc_da)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tf.Tensor(</span><br><span class="line">[[-0.0762483   0.9965559 ]</span><br><span class="line"> [ 0.42784458  0.7609917 ]], shape=(2, 2), dtype=float32)</span><br></pre></td></tr></table></figure>
+
+<p>请注意,你可以通过嵌套tapes来计算高阶导数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tf.GradientTape() <span class="keyword">as</span> outer_tape:</span><br><span class="line">  <span class="keyword">with</span> tf.GradientTape() <span class="keyword">as</span> tape:</span><br><span class="line">    c=tf.sqrt(tf.square(a)+tf.square(b))</span><br><span class="line">    dc_da=tape.gradient(c,a)</span><br><span class="line">  d2c_d2a=outer_tape.gradient(dc_da,a)</span><br><span class="line">  print(d2c_d2a)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tf.Tensor(</span><br><span class="line">[[0.56703806 0.00442213]</span><br><span class="line"> [1.3406688  0.30591592]], shape=(2, 2), dtype=float32)</span><br></pre></td></tr></table></figure>
+
+<h3><span id="一个端到端的案例线性回归">一个端到端的案例：线性回归</span></h3><p>到目前为止，你已经了解到TensorFlow是一个类似Numpy的库，可通过GPU或TPU加速并具有自动区分功能。 端到端示例的时间：让我们实现线性回归，即机器学习的FizzBuzz。</p>
+<p>为了演示起见，我们将不使用任何更高层的Keras组件，例如Layer或MeanSquaredError。 只是基本操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">input_dim=<span class="number">2</span></span><br><span class="line">output_dim=<span class="number">1</span></span><br><span class="line">learning_rate=<span class="number">0.01</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 权重矩阵</span></span><br><span class="line">w = tf.Variable(tf.random.uniform(shape=(input_dim,output_dim)))</span><br><span class="line"><span class="comment"># 偏置向量</span></span><br><span class="line">b = tf.Variable(tf.zeros(shape=(output_dim,)))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compute_predictions</span><span class="params">(features)</span>:</span></span><br><span class="line">  <span class="keyword">return</span> tf.matmul(features,w) + b</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compute_loss</span><span class="params">(labels,predictions)</span>:</span></span><br><span class="line">  <span class="keyword">return</span> tf.reduce_mean(tf.square(labels - predictions))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_on_batch</span><span class="params">(x, y)</span>:</span></span><br><span class="line">  <span class="keyword">with</span> tf.GradientTape() <span class="keyword">as</span> tape:</span><br><span class="line">    predictions = compute_predictions(x)</span><br><span class="line">    loss = compute_loss(y, predictions)</span><br><span class="line">    dloss_dw,dloss_db = tape.gradient(loss, [w, b])</span><br><span class="line">  w.assign_sub(learning_rate * dloss_dw)</span><br><span class="line">  b.assign_sub(learning_rate * dloss_db)</span><br><span class="line">  <span class="keyword">return</span> loss</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment"># Prepare a dataset.</span></span><br><span class="line">num_samples = <span class="number">10000</span></span><br><span class="line">negative_samples = np.random.multivariate_normal(</span><br><span class="line">    mean=[<span class="number">0</span>, <span class="number">3</span>], cov=[[<span class="number">1</span>, <span class="number">0.5</span>],[<span class="number">0.5</span>, <span class="number">1</span>]], size=num_samples)</span><br><span class="line">positive_samples = np.random.multivariate_normal(</span><br><span class="line">    mean=[<span class="number">3</span>, <span class="number">0</span>], cov=[[<span class="number">1</span>, <span class="number">0.5</span>],[<span class="number">0.5</span>, <span class="number">1</span>]], size=num_samples)</span><br><span class="line">features = np.vstack((negative_samples, positive_samples)).astype(np.float32)</span><br><span class="line">labels = np.vstack((np.zeros((num_samples, <span class="number">1</span>), dtype=<span class="string">'float32'</span>),</span><br><span class="line">                    np.ones((num_samples, <span class="number">1</span>), dtype=<span class="string">'float32'</span>)))</span><br><span class="line"></span><br><span class="line">plt.scatter(features[:, <span class="number">0</span>], features[:, <span class="number">1</span>], c=labels[:, <span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;matplotlib.collections.PathCollection at 0x7fc9806e67f0&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/10/09/Tensorflow-2-0基础教程-1-TF基础/output_36_1.png" alt="output_36_1"></p>
+<p>现在，通过逐批迭代数据并重复调用train_on_batch来训练线性回归：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Shuffle the data.</span></span><br><span class="line">random.Random(<span class="number">1337</span>).shuffle(features)</span><br><span class="line">random.Random(<span class="number">1337</span>).shuffle(labels)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a tf.data.Dataset object for easy batched iteration</span></span><br><span class="line">dataset = tf.data.Dataset.from_tensor_slices((features, labels))</span><br><span class="line">dataset = dataset.shuffle(buffer_size=<span class="number">1024</span>).batch(<span class="number">256</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">  <span class="keyword">for</span> step, (x, y) <span class="keyword">in</span> enumerate(dataset):</span><br><span class="line">    loss = train_on_batch(x, y)</span><br><span class="line">  print(<span class="string">'Epoch %d: last batch loss = %.4f'</span> % (epoch, float(loss)))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Epoch 0: last batch loss = 0.1258</span><br><span class="line">Epoch 1: last batch loss = 0.0468</span><br><span class="line">Epoch 2: last batch loss = 0.0467</span><br><span class="line">Epoch 3: last batch loss = 0.0350</span><br><span class="line">Epoch 4: last batch loss = 0.0469</span><br><span class="line">Epoch 5: last batch loss = 0.0261</span><br><span class="line">Epoch 6: last batch loss = 0.0372</span><br><span class="line">Epoch 7: last batch loss = 0.0253</span><br><span class="line">Epoch 8: last batch loss = 0.0246</span><br><span class="line">Epoch 9: last batch loss = 0.0339</span><br></pre></td></tr></table></figure>
+
+<p>我们来看看模型的表现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">predictions = compute_predictions(features)</span><br><span class="line">plt.scatter(features[:,<span class="number">0</span>], features[:,<span class="number">1</span>],c=predictions[:,<span class="number">0</span>]&gt;<span class="number">0.5</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;matplotlib.collections.PathCollection at 0x7fc97ca68400&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/10/09/Tensorflow-2-0基础教程-1-TF基础/output_40_1.png" alt="output_40_1"></p>
+<h2><span id="用-tffunction-让它变得更快">用 tf.function 让它变得更快</span></h2><p>先看看我们目前模型的速度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">t0 = time.time()</span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(<span class="number">20</span>):</span><br><span class="line">  <span class="keyword">for</span> step, (x,y) <span class="keyword">in</span> enumerate(dataset):</span><br><span class="line">    loss = train_on_batch(x,y)</span><br><span class="line">t_end  = time.time() - t0</span><br><span class="line">print(<span class="string">'Time per epoch: %.3f s'</span> % (t_end / <span class="number">20</span>))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Time per epoch: 0.124 s</span><br></pre></td></tr></table></figure>
+
+<p>让我们将训练函数编译成静态图。 从字面上看，我们需要做的就是在其上添加tf.function装饰器：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@tf.function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_on_batch</span><span class="params">(x, y)</span>:</span></span><br><span class="line">  <span class="keyword">with</span> tf.GradientTape() <span class="keyword">as</span> tape:</span><br><span class="line">    predictions = compute_predictions(x)</span><br><span class="line">    loss = compute_loss(y, predictions)</span><br><span class="line">    dloss_dw,dloss_db = tape.gradient(loss, [w, b])</span><br><span class="line">    w.assign_sub(learning_rate * dloss_dw)</span><br><span class="line">    b.assign_sub(learning_rate * dloss_db)</span><br><span class="line">    <span class="keyword">return</span> loss</span><br></pre></td></tr></table></figure>
+
+<p>让我们重新运行我们的模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">t0 = time.time()</span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(<span class="number">20</span>):</span><br><span class="line">  <span class="keyword">for</span> step, (x,y) <span class="keyword">in</span> enumerate(dataset):</span><br><span class="line">    loss = train_on_batch(x,y)</span><br><span class="line">t_end  = time.time() - t0</span><br><span class="line">print(<span class="string">'Time per epoch: %.3f s'</span> % (t_end / <span class="number">20</span>))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Time per epoch: 0.080 s</span><br></pre></td></tr></table></figure>
+
+<p>整整减少40％。 在这种情况下，我们使用了一个简单的模型。 通常，模型越大，通过利用静态图就可以提高速度。</p>
+<p><strong>请记住：eager execution执行对于逐行调试和打印结果非常有用，但是当需要扩展时，静态图是研究人员最好的朋友。</strong></p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/07/15/机器学习中的频率学派和贝叶斯学派/" data-toggle="tooltip" data-placement="top" title="机器学习中的频率学派和贝叶斯学派">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+                                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">面向深度学习研究人员的Tensorflow 2.0 和 Keras 概述</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Part 1: TensorFlow 基础</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Tensors</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Random constant tensors</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">Variables</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">在Tensorflow中进行数学运算</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">使用GradientTape计算梯度</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">一个端到端的案例：线性回归</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">用 tf.function 让它变得更快</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#机器学习" title="机器学习">机器学习</a>
+                        
+                          <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                        
+                          <a class="tag" href="/tags/#TensorFlow" title="TensorFlow">TensorFlow</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://cinslab.com" target="_blank">CINS LAB</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/wangke0825">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/5485738753">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/wangke0825">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyrights Reserved &copy; Ke Wang 2019  
+                    <br/>备案号:<b>蜀ICP备18016250号-1 </b>
+                </p>
+                <p class="copyright text-muted">
+                <span id="busuanzi_container_site_pv">
+                    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+                </span>|
+                <span id="busuanzi_container_site_uv">
+                    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+                  </span>
+                </p>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+                </script>
+
+                <!-- <p class="copyright text-muted">
+                    <span class="post-count">2.7k words altogether</span>
+                </p> -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://weekweekup.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://weekweekup.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
