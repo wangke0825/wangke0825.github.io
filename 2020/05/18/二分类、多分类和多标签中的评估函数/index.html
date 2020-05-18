@@ -141,14 +141,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -211,14 +211,14 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="1二分类">1.二分类</span></h2><h2><span id="1二分类">1.二分类</span></h2><p>简单来说，二分类就是任务中有两个类别。比如最常见的猫狗识别，给定一张图片，判断它是猫还是狗（假定所有图片不是猫就是狗）。</p>
+                <h2><span id="1二分类">1.二分类</span></h2><p>简单来说，二分类就是任务中有两个类别。比如最常见的猫狗识别，给定一张图片，判断它是猫还是狗（假定所有图片不是猫就是狗）。</p>
 <p>对于二分类问题，常见的评价函数就是精确率（precision）、召回率（recall）以及F1值。</p>
 <p>我们先画出混淆矩阵：</p>
 <p><img src="/2020/05/18/二分类、多分类和多标签中的评估函数/%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5.png" alt="混淆矩阵"></p>
 <p>这个表格可以这样来看：以第一行为例，在数据集里面的所有正例中，被预测为正例我们称为真正例（TP），被预测为反例的我们称为假反例（FN）。同理，以第一列为例，在被预测为正例的样本中，是正例的我们称为真正例（TP），被预测为反例的我们称为假正例（FP）。</p>
-<h3><span id="精确率">精确率</span></h3><p> 精确率(P) ： $precision=\frac{TP}{TP+FP}$</p>
+<h3><span id="精确率">精确率</span></h3><p>$$<br>precision=\frac{TP}{TP+FP}<br>$$</p>
 <p>个人理解，就是以列的方向来看，那么在我的预测结果中，有多少是正确的，预测正确的样本数除以总的预测样本数就是精确率。<strong>它强调的是精度。</strong></p>
-<h3><span id="召回率">召回率</span></h3><p>召回率(R) ： $recall=\frac{TP}{TP+FN}$</p>
+<h3><span id="召回率">召回率</span></h3><p>$$<br>recall=\frac{TP}{TP+FN}<br>$$</p>
 <p>召回率的话，就是以行的方向来看，也就是有多少个样本被分为正例。<strong>它强调的是覆盖面。</strong></p>
 
                 
@@ -254,7 +254,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1.二分类</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">1.二分类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">精确率</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">召回率</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1.二分类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">精确率</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">召回率</span></a></li></ol></li></ol>
         
         </div>
       </aside>
