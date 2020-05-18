@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          机器学习炼成记 | 王柯
+          二分类、多分类和多标签中的评估函数 - 机器学习炼成记 | 王柯
         
     </title>
 
-    <link rel="canonical" href="http://weekweekup.com/archives/2019/10/">
+    <link rel="canonical" href="http://weekweekup.com/2020/05/18/二分类、多分类和多标签中的评估函数/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,8 +69,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/undefined')
-            /*page*/
+            background-image: url('img/header_img/Iron-Man-3.jpg')
+            /*post*/
         
     }
     
@@ -87,10 +87,18 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>机器学习炼成记</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">王柯 | 软件工程硕士研究生在读 | 机器学习;自然语言处理</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#机器学习" title="机器学习">机器学习</a>
+                            
+                        </div>
+                        <h1>二分类、多分类和多标签中的评估函数</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Ke Wang on
+                            2020-05-18
+                        </span>
                     </div>
                 
 
@@ -190,238 +198,145 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- 归档列表 -->
-            
-            
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-             <!-- 归档列表 -->
+                <h2><span id="1二分类">1.二分类</span></h2><h2><span id="1二分类">1.二分类</span></h2><p>简单来说，二分类就是任务中有两个类别。比如最常见的猫狗识别，给定一张图片，判断它是猫还是狗（假定所有图片不是猫就是狗）。</p>
+<p>对于二分类问题，常见的评价函数就是精确率（precision）、召回率（recall）以及F1值。</p>
+<p>我们先画出混淆矩阵：</p>
+<p><img src="/2020/05/18/二分类、多分类和多标签中的评估函数/%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5.png" alt="混淆矩阵"></p>
+<p>这个表格可以这样来看：以第一行为例，在数据集里面的所有正例中，被预测为正例我们称为真正例（TP），被预测为反例的我们称为假反例（FN）。同理，以第一列为例，在被预测为正例的样本中，是正例的我们称为真正例（TP），被预测为反例的我们称为假正例（FP）。</p>
+<h3><span id="精确率">精确率</span></h3><p> 精确率(P) ： $precision=\frac{TP}{TP+FP}$</p>
+<p>个人理解，就是以列的方向来看，那么在我的预测结果中，有多少是正确的，预测正确的样本数除以总的预测样本数就是精确率。<strong>它强调的是精度。</strong></p>
+<h3><span id="召回率">召回率</span></h3><p>召回率(R) ： $recall=\frac{TP}{TP+FN}$</p>
+<p>召回率的话，就是以行的方向来看，也就是有多少个样本被分为正例。<strong>它强调的是覆盖面。</strong></p>
 
-            
-            <div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-                    <span class="tag-text">2020</span>
-                </span>
-                <ul>
                 
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    05-18
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2020/05/18/二分类、多分类和多标签中的评估函数/" style="color: #0085a1">
-                        <span>
-                            二分类、多分类和多标签中的评估函数
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/10/09/Tensorflow-2-0基础教程-1-TF基础/" data-toggle="tooltip" data-placement="top" title="Tensorflow 2.0基础教程--1.TF基础">Next Post &rarr;</a>
+                        </li>
+                    
                 </ul>
+                                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
             </div>
             
-            <div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2019">
-                    <span class="tag-text">2019</span>
-                </span>
-                <ul>
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1.二分类</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">1.二分类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">精确率</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">召回率</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
                 
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    10-09
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/10/09/Tensorflow-2-0基础教程-1-TF基础/" style="color: #0085a1">
-                        <span>
-                            Tensorflow 2.0基础教程--1.TF基础
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
                 
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    07-04
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/07/04/一文带你搞懂梯度下降/" style="color: #0085a1">
-                        <span>
-                            一文带你搞懂梯度下降
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#机器学习" title="机器学习">机器学习</a>
+                        
+                    </div>
+                </section>
                 
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://cinslab.com" target="_blank">CINS LAB</a></li>
+                    
                 </ul>
+                
             </div>
-            
-
-
         </div>
     </div>
-</div>
+</article>
 
-                <!-- 如果开启评论功能 -->
-                
-            </div>
 
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
 
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
-        
-            
-            <a href="/tags/#机器学习" title="机器学习" rel="3">机器学习</a>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    </div>
-</section>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
 
-        
-            <img id = "avatar_pic" src="/img/ironman-draw.png" />
-        
 
-        
-            <p>永远坚持自己最初的梦想</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
-                <li>
-                    <a target="_blank" href="https://www.zhihu.com/people/wangke0825">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                        </span>
-                    </a>
-                </li>
-            
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
-            
-                <li>
-                    <a target="_blank" href="http://weibo.com/5485738753">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-
-            
-
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/wangke0825">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
-            
-            
-        </ul>
-    </div>
-</section>
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2020/05/18/二分类、多分类和多标签中的评估函数/">二分类、多分类和多标签中的评估函数</a>
-        </li>
-      
-        <li>
-          <a href="/2019/10/09/Tensorflow-2-0基础教程-1-TF基础/">Tensorflow 2.0基础教程--1.TF基础</a>
-        </li>
-      
-        <li>
-          <a href="/2019/07/04/一文带你搞懂梯度下降/">一文带你搞懂梯度下降</a>
-        </li>
-      
-    </ul>
-  </div>
-
-        <hr>
-    
-        <!-- Friends Blog -->
-
-<h5>FRIENDS</h5>
-<ul class="list-inline">
-
-    
-        <li><a href="http://cinslab.com" target="_blank">CINS LAB</a></li>
-    
-</ul>
-
-        <hr>
-    
-</div>
-
-        
-    </div>
-</div>
-
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
     <!-- Footer -->
     <!-- Footer -->
